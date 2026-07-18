@@ -1,17 +1,15 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        unordered_map<int, int> ans;
+        int elem = nums[0];
+        int count = 0;
         for(int i = 0;i<nums.size();i++){
-            ans[nums[i]]++;
-        }
-        int result = INT_MIN;
-        int elem;
-        for (const auto& [element, count] : ans) {
-            if(count>=result){
-                result = count;
-                elem = element;
+            if(count==0){
+                elem = nums[i];
             }
+            if(nums[i]==elem){
+                count++;
+            }else count--;
         }
         return elem;
     }
